@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }} | {{ company_name }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 text-slate-800 min-h-screen">
+  <div class="flex flex-col lg:flex-row min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-72 bg-white/80 backdrop-blur-xl border-r border-white/50 shadow-xl z-20">
+      <div class="p-6 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 to-brand-900 flex items-center justify-center text-white font-bold text-lg shadow-lg">W</div>
+          <div>
+            <h1 class="font-bold text-slate-900 leading-tight">{{ company_name }}</h1>
+            <p class="text-xs text-slate-500">AI Opportunity Matcher</p>
+          </div>
+        </div>
+      </div>
+      <nav class="p-4 space-y-2 overflow-y-auto">
+        <button data-section="profile" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all bg-brand-50 text-brand-700 shadow-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+          Student Profile
+        </button>
+        <button data-section="scholarships" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Scholarships
+        </button>
+        <button data-section="internships" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          Internships
+        </button>
+        <button data-section="hackathons" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          Hackathons
+        </button>
+        <button data-section="fellowships" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+          Fellowships
+        </button>
+        <button data-section="certifications" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.318 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.318 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.318 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.318 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+          Certifications
+        </button>
+        <button data-section="skillgap" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Skill Gap
+        </button>
+        <button data-section="report" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Career Report
+        </button>
+      </nav>
+      <div class="p-4 mt-auto border-t border-slate-100">
+        <div class="bg-brand-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-brand-900 mb-1">Need help?</p>
+          <a href="mailto:{{ support_email }}" class="text-xs text-brand-600 hover:underline break-all">{{ support_email }}</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-4 lg:p-8 overflow-y-auto">
+      <header class="mb-8">
+        <h2 class="text-2xl lg:text-3xl font-bold text-slate-900">{{ app_name }}</h2>
+        <p class="text-slate-500 mt-1">Discover scholarships, internships, hackathons, and career opportunities powered by AI.</p>
+      </header>
+
+      <!-- Profile Form -->
+      <section id="profile" class="content-section">
+        <div class="glass-card rounded-2xl p-6 lg:p-8 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+            Student Profile
+          </h3>
+          <form id="profileForm" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+              <input type="text" name="full_name" required placeholder="e.g. Priya Sharma" class="input-field">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Education Level</label>
+              <select name="education_level" required class="input-field">
+                <option value="">Select</option>
+                <option value="Diploma">Diploma</option>
+                <option value="UG">Undergraduate (UG)</option>
+                <option value="PG">Postgraduate (PG)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Degree & Branch</label>
+              <input type="text" name="degree_branch" required placeholder="e.g. B.Tech CSE" class="input-field">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Year of Study</label>
+              <select name="year_of_study" required class="input-field">
+                <option value="">Select</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="Final Year">Final Year</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">CGPA / Percentage</label>
+              <input type="number" name="cgpa" required min="0" max="100" step="0.01" placeholder="e.g. 8.5 or 85" class="input-field">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">College Name</label>
+              <input type="text" name="college_name" required placeholder="e.g. VIT Vellore" class="input-field">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">State / Country</label>
+              <input type="text" name="location" required placeholder="e.g. Tamil Nadu, India" class="input-field">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Career Goal</label>
+              <select name="career_goal" required class="input-field">
+                <option value="">Select</option>
+                <option value="Higher Studies">Higher Studies</option>
+                <option value="Job">Job / Placement</option>
+                <option value="Research">Research</option>
+                <option value="Startup">Startup</option>
+                <option value="Government">Government Job</option>
+                <option value="Freelance">Freelance</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Skills</label>
+              <div class="flex flex-wrap gap-2 mb-2" id="skillsTags"></div>
+              <input type="text" id="skillsInput" placeholder="Type a skill and press Enter (e.g. Python, React)" class="input-field">
+              <input type="hidden" name="skills" id="skillsHidden">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Interests</label>
+              <div class="flex flex-wrap gap-2 mb-2" id="interestsTags"></div>
+              <input type="text" id="interestsInput" placeholder="Type an interest and press Enter (e.g. AI/ML, Web3)" class="input-field">
+              <input type="hidden" name="interests" id="interestsHidden">
+            </div>
+            <div class="md:col-span-2 flex flex-wrap gap-3 pt-2">
+              <button type="button" id="btnMatch" class="btn-primary">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Match Opportunities
+              </button>
+              <button type="button" id="btnReport" class="btn-secondary">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Generate Career Report
+              </button>
+              <button type="button" id="btnClear" class="btn-ghost">
+                Clear Form
+              </button>
+              <button type="button" id="btnDownload" class="btn-ghost hidden">
+                Download Report
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Profile Summary -->
+        <div id="profileSummary" class="hidden glass-card rounded-2xl p-6 mb-8 border-l-4 border-brand-500">
+          <h4 class="font-bold text-slate-900 mb-2">AI Profile Summary</h4>
+          <p id="summaryText" class="text-slate-700 leading-relaxed"></p>
+          <div id="summaryTags" class="flex flex-wrap gap-2 mt-4"></div>
+        </div>
+      </section>
+
+      <!-- Results sections -->
+      <section id="scholarships" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Scholarships
+        </h3>
+        <div id="scholarshipsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+      </section>
+
+      <section id="internships" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          Internships
+        </h3>
+        <div id="internshipsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+      </section>
+
+      <section id="hackathons" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          Hackathons & Competitions
+        </h3>
+        <div id="hackathonsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+      </section>
+
+      <section id="fellowships" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+          Fellowships & Research
+        </h3>
+        <div id="fellowshipsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+      </section>
+
+      <section id="certifications" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.318 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.318 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.318 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.318 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+          Certifications & Learning Roadmap
+        </h3>
+        <div id="certificationsTimeline" class="space-y-6"></div>
+      </section>
+
+      <section id="skillgap" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Resume & Skill Gap Analysis
+        </h3>
+        <div id="skillGapContent" class="glass-card rounded-2xl p-6"></div>
+      </section>
+
+      <section id="report" class="content-section hidden">
+        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Career Opportunity Report
+        </h3>
+        <div id="reportContent" class="glass-card rounded-2xl p-6 lg:p-8"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loader" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl p-8 shadow-2xl flex flex-col items-center">
+      <div class="w-12 h-12 border-4 border-brand-100 border-t-brand-600 rounded-full animate-spin mb-4"></div>
+      <p class="text-slate-700 font-medium" id="loaderText">Analyzing profile with AI...</p>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
