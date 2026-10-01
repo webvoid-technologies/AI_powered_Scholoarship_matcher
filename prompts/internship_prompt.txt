@@ -9,7 +9,10 @@ Student Profile:
 - Interests: {interests}
 - Career Goal: {career_goal}
 
-Recommend 4-6 personalized internships including tech roles, research internships, and emerging fields.
+Retrieved Opportunities from Database:
+{context}
+
+Recommend 4-6 personalized internships including tech roles, research internships, and emerging fields. When possible, use the retrieved opportunities above and include their actual URLs.
 
 Return ONLY a valid JSON object with this exact structure:
 {{
@@ -24,9 +27,9 @@ Return ONLY a valid JSON object with this exact structure:
       "eligibility": "...",
       "learning_outcomes": "...",
       "tips": "...",
-      "resources": ["https://example.com"]
+      "url": "https://official-website.com"
     }}
   ]
 }}
 
-Do not include Markdown code fences or any text outside the JSON.
+Always include a valid URL for each internship. Do not include Markdown code fences or any text outside the JSON.

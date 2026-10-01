@@ -8,7 +8,10 @@ Student Profile:
 - Interests: {interests}
 - Career Goal: {career_goal}
 
-Generate a personalized certification and learning roadmap with beginner, intermediate, and advanced levels aligned to the career goal.
+Retrieved Opportunities from Database:
+{context}
+
+Generate a personalized certification and learning roadmap with beginner, intermediate, and advanced levels aligned to the career goal. When possible, use the retrieved opportunities above and include their actual URLs.
 
 Return ONLY a valid JSON object with this exact structure:
 {{
@@ -22,9 +25,10 @@ Return ONLY a valid JSON object with this exact structure:
       "skills_gained": ["skill1", "skill2"],
       "learning_path": "...",
       "duration": "...",
-      "tips": "..."
+      "tips": "...",
+      "url": "https://official-website.com"
     }}
   ]
 }}
 
-Do not include Markdown code fences or any text outside the JSON.
+Always include a valid URL for each certification. Do not include Markdown code fences or any text outside the JSON.

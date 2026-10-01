@@ -10,7 +10,10 @@ Student Profile:
 - Interests: {interests}
 - Career Goal: {career_goal}
 
-Recommend 4-6 fellowships, research internships, student exchange programs, innovation grants, and research competitions.
+Retrieved Opportunities from Database:
+{context}
+
+Recommend 4-6 fellowships, research internships, student exchange programs, innovation grants, and research competitions. When possible, use the retrieved opportunities above and include their actual URLs.
 
 Return ONLY a valid JSON object with this exact structure:
 {{
@@ -23,9 +26,9 @@ Return ONLY a valid JSON object with this exact structure:
       "eligibility": "...",
       "benefits": "...",
       "tips": "...",
-      "resources": ["https://example.com"]
+      "official_link": "https://official-website.com"
     }}
   ]
 }}
 
-Do not include Markdown code fences or any text outside the JSON.
+Always include a valid URL for each fellowship. Do not include Markdown code fences or any text outside the JSON.

@@ -221,6 +221,7 @@
           <li><span class="font-semibold text-slate-700">Deadline:</span> ${escapeHtml(item.deadline || 'Rolling')}</li>
           <li><span class="font-semibold text-slate-700">Tips:</span> ${escapeHtml(item.tips || 'N/A')}</li>
         </ul>
+        ${renderApplyLink(item.url)}
         ${renderResources(item.resources)}
       </div>
     `;
@@ -238,6 +239,7 @@
           <li><span class="font-semibold text-slate-700">Outcomes:</span> ${escapeHtml(item.learning_outcomes || 'N/A')}</li>
           <li><span class="font-semibold text-slate-700">Tips:</span> ${escapeHtml(item.tips || 'N/A')}</li>
         </ul>
+        ${renderApplyLink(item.url)}
         ${renderResources(item.resources)}
       </div>
     `;
@@ -255,6 +257,7 @@
           <li><span class="font-semibold text-slate-700">Roadmap:</span> ${escapeHtml(item.roadmap || 'N/A')}</li>
           <li><span class="font-semibold text-slate-700">Tips:</span> ${escapeHtml(item.tips || 'N/A')}</li>
         </ul>
+        ${renderApplyLink(item.official_link || item.url)}
         ${renderResources(item.resources)}
       </div>
     `;
@@ -270,7 +273,20 @@
           <li><span class="font-semibold text-slate-700">Benefits:</span> ${escapeHtml(item.benefits || 'N/A')}</li>
           <li><span class="font-semibold text-slate-700">Tips:</span> ${escapeHtml(item.tips || 'N/A')}</li>
         </ul>
+        ${renderApplyLink(item.official_link || item.url)}
         ${renderResources(item.resources)}
+      </div>
+    `;
+  }
+
+  function renderApplyLink(url) {
+    if (!url) return '';
+    return `
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="btn-primary text-sm w-full justify-center">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          Apply Now
+        </a>
       </div>
     `;
   }
@@ -302,6 +318,7 @@
           <p class="text-sm text-slate-700 mb-2"><strong>Learning Path:</strong> ${escapeHtml(item.learning_path || 'N/A')}</p>
           <p class="text-sm text-slate-700"><strong>Skills Gained:</strong> ${(item.skills_gained || []).map(escapeHtml).join(', ') || 'N/A'}</p>
           ${item.tips ? `<p class="text-sm text-slate-600 mt-2"><strong>Tips:</strong> ${escapeHtml(item.tips)}</p>` : ''}
+          ${renderApplyLink(item.url)}
         </div>
       </div>
     `;

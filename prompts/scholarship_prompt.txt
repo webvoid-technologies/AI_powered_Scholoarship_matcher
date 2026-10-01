@@ -10,7 +10,10 @@ Student Profile:
 - Interests: {interests}
 - Career Goal: {career_goal}
 
-Recommend 5-7 personalized scholarships from these categories: Government, Private, International, Women, Minority, Merit, Need-Based.
+Retrieved Opportunities from Database:
+{context}
+
+Recommend 5-7 personalized scholarships from these categories: Government, Private, International, Women, Minority, Merit, Need-Based. When possible, use the retrieved opportunities above and include their actual URLs.
 
 Return ONLY a valid JSON object with this exact structure:
 {{
@@ -25,9 +28,9 @@ Return ONLY a valid JSON object with this exact structure:
       "benefits": "...",
       "deadline": "...",
       "tips": "...",
-      "resources": ["https://example.com"]
+      "url": "https://official-website.com"
     }}
   ]
 }}
 
-Use realistic Indian and international opportunities. Match percentage should be 60-100. Do not include Markdown code fences or any text outside the JSON.
+Use realistic Indian and international opportunities. Match percentage should be 60-100. Always include a valid URL for each scholarship. Do not include Markdown code fences or any text outside the JSON.

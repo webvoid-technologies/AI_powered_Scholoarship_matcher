@@ -8,7 +8,10 @@ Student Profile:
 - Interests: {interests}
 - Career Goal: {career_goal}
 
-Recommend 5-8 hackathons, coding competitions, innovation challenges, startup competitions, and AI/ML competitions suitable for this profile.
+Retrieved Opportunities from Database:
+{context}
+
+Recommend 5-8 hackathons, coding competitions, innovation challenges, startup competitions, and AI/ML competitions suitable for this profile. When possible, use the retrieved opportunities above and include their actual URLs.
 
 Return ONLY a valid JSON object with this exact structure:
 {{
@@ -23,9 +26,9 @@ Return ONLY a valid JSON object with this exact structure:
       "required_skills": ["skill1", "skill2"],
       "roadmap": "Step-by-step preparation plan",
       "tips": "...",
-      "resources": ["https://example.com"]
+      "official_link": "https://official-website.com"
     }}
   ]
 }}
 
-Do not include Markdown code fences or any text outside the JSON.
+Always include a valid URL for each hackathon. Do not include Markdown code fences or any text outside the JSON.

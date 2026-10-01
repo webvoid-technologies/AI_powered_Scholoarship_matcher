@@ -85,6 +85,9 @@ class RAGService:
             doc = match.get('document', '').strip()
             if doc:
                 lines.append(doc)
+            url = match.get('url') or match.get('official_link')
+            if url:
+                lines.append(f"URL: {url}")
             context_parts.append('\n'.join(lines))
 
         return '\n\n---\n\n'.join(context_parts)
